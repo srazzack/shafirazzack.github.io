@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shafi Razzack's Event Invitations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    
+    <script src="app.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <!-- Bootstraps Custom styles -->
+    <link rel="stylesheet" href="bootstrapblog.css" type="text/css">
+  </head>
+
+  <body ng-app="eventsApp">
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="#">Home</a>
+          <a class="blog-nav-item" href="#">New features</a>
+          <a class="blog-nav-item" href="#">Press</a>
+          <a class="blog-nav-item" href="#">New hires</a>
+          <a class="blog-nav-item" href="#">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">Intercom Event Cards</h1>
+        <p class="lead blog-description">We want to invite our employees to some of our events</p>
+      </div>
+
+      <div ng-controller="EventsController">
+        <div class="row">
+          <div style="margin-bottom: 25px;" class="col-lg-4" ng-repeat="event in events">
+            <div class="card transition">
+              <div class="card_fold transition"></div>
+              <h2 class="eventDay">{{getFormatedDate(event, true)}}</h2>
+              <h2 class="eventDate">{{getFormatedDate(event, false)}}</h2>
+              <h2 class="transition heading">{{event.occasion}}</h2>
+              <div class="occasion"><p>The Event Occasion: {{event.occasion}}</p></div>
+              <div class="inviteCount">Invites: {{event.invited_count}}<div>
+              <div ng-show="{{getEventStatus(event)}}" class="ng-hide">
+                <div class="attendButton-container transition"><a href="#" class="attendButton">Attend</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
